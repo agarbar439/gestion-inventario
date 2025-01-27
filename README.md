@@ -37,6 +37,7 @@ El objetivo general de la aplicación es permitir gestionar el inventario, contr
 - **Framework Principal:** Express.js
 - **Base de Datos:** MySQL
 - **Funcionalidades:**
+- 
     - API RESt para gestionar inventario, productos y categorias.
     - Operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
     - Sistema de autenticación (JWT).
@@ -51,14 +52,4 @@ El objetivo general de la aplicación es permitir gestionar el inventario, contr
     - Bootstrap
     
 
-## Diagrama de la Aplicación
 
-```mermaid
-graph TD
-    A["Cliente Web"] --> B["Frontend Vue.js"]
-    B --> C["API Laravel"]
-    C --> D["Base de Datos MySQL"]
-    B --> E["Gestión de Productos"]
-    B --> F["Control de Stock"]
-    B --> G["Sistema de Búsqueda"]
-```
