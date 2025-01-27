@@ -14,7 +14,6 @@ Además, incorpora funcionalidades como el filtrado y la búsqueda de productos.
 
 - Control de inventario
 - Gestión de productos y categorías
-- Sistema de búsqueda y filtrado
 - Control de stock
 - Interfaz intuitiva
 - Sistema de autenticación seguro
@@ -26,7 +25,6 @@ El objetivo general de la aplicación es permitir gestionar el inventario, contr
 1. Gestionar productos: Permitir a los usuarios agregar, editar y eliminar productos del inventario
 2. Controlar el Stock: Registrar entradas y salidas de productos, actualizando la cantidad disponible en el inventario.
 3. Gestión de categorías: Gestionar los productos en categorías.
-4. Búsqueda: Sistema de búsqueda para filtrar los productos.
 5. Interfaz intuitiva: Interfaz de usuario intuitiva y fácil de usar.
 6. Seguridad y control de acceso: Sistema de autenticación para que solo usuarios autorizados puedan modificar el inventario.
 
@@ -44,7 +42,6 @@ El objetivo general de la aplicación es permitir gestionar el inventario, contr
 
 ### Frontend
 -**HTML, CSS y Javascript**
-
     - Interfaz de Usuario moderna y responsiva.
     - Conexión al backend mediante fetch o axios.
     
