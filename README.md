@@ -6,7 +6,7 @@
 
 ## Descripción General
 
-Sistema de Gestión de Inventario, aplicación para facilitar el control y la administración de productos en un inventario. Permitirá a los usuarios gestionar productos y categorías, controlar el stock disponible, y registrar operaciones de entrada y salida de mercancías.
+Sistema de Gestión de Inventario, aplicación para facilitar el control y la administración de productos en un inventario. Permitirá a los usuarios gestionar productos y categorías, controlar el stock disponible, y registrar operaciones de entrada y salida de mercancías además de contar con zonas restringidas, donde solo los administradores tienen acceso.
 
 Además, incorpora funcionalidades como el filtrado y la búsqueda de productos.
 
