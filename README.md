@@ -34,17 +34,19 @@ El objetivo general de la aplicación es permitir gestionar el inventario, contr
 
 ### Backend
 
-- **Framework Principal:** Laravel (PHP)
+- **Framework Principal:** Express.js
 - **Base de Datos:** MySQL
 - **Funcionalidades:**
-    - API
-    - Operaciones CRUD
-    - Gestión de autenticación
+    - API RESt para gestionar inventario, productos y categorias.
+    - Operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+    - Sistema de autenticación (JWT).
+    - Base de datos: MySQL.
 
 ### Frontend
-
-- **Framework:** Vue.js
-- **Cliente HTTP:** Axios
+-**HTML, CSS y Javascript**
+    - Interfaz de Usuario moderna y responsiva.
+    - Conexión al backend mediante fetch o axios.
+    
 - **Frameworks CSS:**
     - Bootstrap
     
