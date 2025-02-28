@@ -1,10 +1,16 @@
 import express from 'express';
 import { signup, login } from '../controllers/authController.js';
+import { authenticate } from '../middlewares/authMiddleware.js'; // Importar el middleware
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
     res.render('login');
+});
+
+// Ejemplo proteger rutas
+router.get('/home', authenticate, (req, res) => {
+    res.send("hola");
 });
 
 // Ruta para la vista de signup (GET)

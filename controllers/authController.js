@@ -76,16 +76,24 @@ export const login = async (req, res) => {
 */
 
 import { generateToken, createUser, verifyUser } from "../services/authService.js";
+import { signupSchema, loginSchema } from "../utils/validation.js";
+import { z } from 'zod';
 
 // Función para manejar el registro de usuarios
 export const signup = async (req, res) => {
-    const { nombre, apellidos, nombre_usuario, correo, contrasena, rol } = req.body;
-
-    if (!nombre || !apellidos || !nombre_usuario || !correo || !contrasena || !rol) {
-        return res.status(400).json({ error: 'Todos los campos son obligatorios' });
-    }
-
     try {
+        // Validar los datos de la solicitud con Zod
+        signupSchema.parse(req.body);
+
+        // Obtener los datos de los parámetros
+        const { nombre, apellidos, nombre_usuario, correo, contrasena, rol } = req.body;
+
+        // Comprobar que todos los campos esten rellenos
+        if (!nombre || !apellidos || !nombre_usuario || !correo || !contrasena || !rol) {
+            return res.status(400).json({ error: 'Todos los campos son obligatorios' });
+        }
+
+
         // Validar si el usuario ya existe
         const existingUser = await user.findOne({ where: { nombre_usuario } });
         if (existingUser) {
@@ -100,6 +108,10 @@ export const signup = async (req, res) => {
 
         res.status(201).json({ message: 'Usuario creado con éxito', token });
     } catch (error) {
+        if (error instanceof z.ZodError) {
+            // Si la validación de Zod falla, devolver un error de validación
+            return res.status(400).json({ error: error.errors[0].message });
+        }
         console.error('Error al crear el usuario:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
     }
@@ -107,18 +119,15 @@ export const signup = async (req, res) => {
 
 // Función para manejar el login de usuarios
 export const login = async (req, res) => {
-    const { nombre_usuario, contrasena } = req.body;
-
-    // Verificar que se proporcionen ambos datos
-    if (!nombre_usuario || !contrasena) {
-        return res.status(400).json({ error: 'Se debe proporcionar un nombre de usuario y una contraseña.' });
-    }
-
     try {
+        // Validar los datos de la solicitud con Zod
+        loginSchema.parse(req.body);
+
+        const { nombre_usuario, contrasena } = req.body;
+
         // Verificar el usuario y la contraseña
         const user = await verifyUser(nombre_usuario, contrasena);
 
-        // Si no se encuentra un usuario o las credenciales son incorrectas
         if (!user) {
             return res.status(401).json({ error: 'Nombre de usuario o contraseña incorrectos.' });
         }
@@ -127,19 +136,21 @@ export const login = async (req, res) => {
         const token = generateToken(user);
 
         // Enviar el token en la respuesta
-        res.status(200).json({ message: 'Login exitoso' });
+        res.status(200).json({ message: 'Login exitoso', token });
 
     } catch (error) {
-        // Error durante el proceso de login
-        console.error('Error al iniciar sesión:', error);
-
-        // Dependiendo de la situación, puedes personalizar más el mensaje de error
-        if (error.name === 'SequelizeDatabaseError') {
-            // Error en la base de datos
-            res.status(500).json({ error: 'Error al conectar con la base de datos.' });
-        } else {
-            // Error genérico
-            res.status(500).json({ error: 'Error interno del servidor.' });
+        if (error instanceof z.ZodError) {
+            // Si la validación de Zod falla, devolver un error de validación
+            return res.status(400).json({ error: error.errors[0].message });
         }
+
+        if (error.message === 'Nombre de usuario o contraseña incorrectos') {
+            // Manejar el error personalizado de `verifyUser`
+            return res.status(401).json({ error: error.message });
+        }
+
+        // Error inesperado durante el proceso de login
+        console.error('Error al iniciar sesión:', error);
+        res.status(500).json({ error: 'Error interno del servidor.' });
     }
 };

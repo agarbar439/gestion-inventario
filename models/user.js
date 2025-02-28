@@ -1,6 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db.js';
 
+// Representación de la base de datos con sequelize
 const User = sequelize.define('User', {
     nombre: {
         type: DataTypes.STRING,
@@ -13,14 +14,14 @@ const User = sequelize.define('User', {
     nombre_usuario: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,  // Asegura que el nombre de usuario sea único
-        primaryKey: true,  // Establece nombre_usuario como la clave primaria
+        unique: true,
+        primaryKey: true,
 
     },
     correo: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,  // Asegura que el correo sea único
+        unique: true,
     },
     contrasena: {
         type: DataTypes.STRING,
@@ -31,7 +32,6 @@ const User = sequelize.define('User', {
         allowNull: false,
     }
 }, {
-    // Opciones del modelo
     tableName: 'usuarios',
     timestamps: false,
 });

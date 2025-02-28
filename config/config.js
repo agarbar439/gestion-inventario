@@ -8,6 +8,7 @@ const config = {
     password: process.env.PASSWORD,
     host: process.env.HOST,
     dialect: 'mysql',
+    secretKey: process.env.SECRET_KEY,
 };
 
 export default config;

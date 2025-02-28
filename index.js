@@ -1,7 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import path from 'path';
 import authRoutes from './routes/authRoutes.js'
 
 dotenv.config();
@@ -17,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 // Configuración de vistas
 app.set('view engine', 'ejs');
 
-// Usar las rutas de autenticación (login y signup)
+// Usar las rutas de autenticacion 
 app.use(authRoutes);
 
 app.listen(port, () => {
