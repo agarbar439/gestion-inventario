@@ -1,7 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import authRoutes from './routes/authRoutes.js'
+import authRoutes from './routes/authRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js'
 
 dotenv.config();
 
@@ -15,9 +16,14 @@ app.use(express.urlencoded({ extended: false }));
 
 // Configuración de vistas
 app.set('view engine', 'ejs');
+app.use(express.static("public")); // Permite servir archivos estáticos desde /public
+
 
 // Usar las rutas de autenticacion 
 app.use(authRoutes);
+
+// Usar la rutas de las categorias
+app.use(categoryRoutes)
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);

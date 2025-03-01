@@ -19,6 +19,7 @@ export default connectBBDD;*/
 import { Sequelize } from 'sequelize';
 import config from './config.js';
 
+
 // Inicialización de Sequelize con la configuración de la base de datos
 const sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
