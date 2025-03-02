@@ -2,7 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
-import categoryRoutes from './routes/categoryRoutes.js'
+import categoryRoutes from './routes/categoryRoutes.js';
+import productRoutes from './routes/productRoutes.js';
 
 dotenv.config();
 
@@ -24,6 +25,9 @@ app.use(authRoutes);
 
 // Usar la rutas de las categorias
 app.use(categoryRoutes)
+
+// Usar las rutas de los productos
+app.use(productRoutes)
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
