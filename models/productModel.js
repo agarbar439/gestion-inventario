@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db.js';
+import Categories from './categoryModel.js';
 
 // Configuracion base de datos productos
 const Products = sequelize.define(
@@ -21,6 +22,12 @@ const Products = sequelize.define(
         id_categoria: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            references: {
+                model: Categories, // Indica que hace referencia al modelo Categories
+                key: 'id_categoria', // La clave primaria en Categories
+            },
+            onUpdate: 'CASCADE',
+            onDelete: 'CASCADE',
         },
         precio_compra: {
             type: DataTypes.FLOAT(10, 2),
@@ -40,5 +47,13 @@ const Products = sequelize.define(
         timestamps: false,
     }
 );
+
+
+// Definir la relación entre Productos y Categorías
+//Indica que cada producto pertenece a una categoría. 
+Products.belongsTo(Categories, { foreignKey: 'id_categoria', as: 'categoria' });
+
+//  Indica que una categoría puede tener muchos productos.
+Categories.hasMany(Products, { foreignKey: 'id_categoria', as: 'productos' });
 
 export default Products;
