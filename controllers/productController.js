@@ -48,4 +48,25 @@ export class productController {
         }
     }
 
+    // Funcion para eliminar un producto
+    static async deleteProduct(req, res) {
+        // Obtener el parametro id de la request
+        const { id } = req.params;
+        try {
+            // Almacenar el producto a borrar, buscando por el id
+            const deleteProductById = await productService.deleteProduct(id);
+
+            // Si no se encuentra el producto, devolver 404
+            if (!deleteProductById) {
+                return res.status(404).json({ message: "Producto no encontrado." });
+            }
+
+            // Devolver mensaje de éxito
+            res.status(200).json({ message: "Producto eliminado correctamente." });
+        } catch (error) {
+            res.status(500).json({ message: "Error al eliminar el producto", error });
+        }
+    }
+
+
 }

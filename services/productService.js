@@ -42,8 +42,23 @@ const productService = {
 
         // Si no existe, crear el nuevo producto
         return await Products.create(input);
-    }
+    },
 
+    // Funcion para eliminar un producto
+    async deleteProduct(id) {
+        // Eliminar el producto, buscandolo por su id
+        const result = await Products.destroy({
+            where: { id_producto: id }
+        });
+
+        // Si no se eliminó ningún producto, devolver null
+        if (result === 0) {
+            return null; // Producto no encontrado o no se eliminó
+        }
+
+        return { message: "Producto eliminado correctamente" }; // Devolver mensaje de éxito
+    }
 }
+
 // Exportar las funciones agrupadas en un solo objeto
 export default productService;
