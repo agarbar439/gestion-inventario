@@ -9,4 +9,7 @@ router.get('/productos', productController.getAllProducts)
 // Ruta para obtener productos por id
 router.get('/productos/:id', productController.getProductById)
 
+// Ruta para crear un producto
+router.post('/productos', productController.createProduct)
+
 export default router;

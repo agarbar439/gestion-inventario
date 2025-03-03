@@ -1,4 +1,6 @@
 import productService from "../services/productService.js";
+import { validateCreateProduct } from "../utils/validation.js";
+import { z } from "zod";
 
 export class productController {
 
@@ -27,5 +29,23 @@ export class productController {
         }
     }
 
+    // Funcion para crear un nuevo producto
+    static async createProduct(req, res) {
+        try {
+            // Validar los campos con Zod
+            const validatedData = validateCreateProduct.parse(req.body);
+
+            // Crear el producto
+            const newProduct = await productService.createProduct(validatedData);
+
+            // Devolver el producto creado en json
+            res.status(201).json(newProduct);
+        } catch (error) {
+            if (error instanceof z.ZodError) {
+                return res.status(400).json({ error: error.errors });
+            }
+            res.status(500).json({ message: "Error al crear el producto", error });
+        }
+    }
 
 }
