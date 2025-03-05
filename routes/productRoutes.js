@@ -15,4 +15,10 @@ router.post('/productos', productController.createProduct)
 // Ruta para eliminar un producto
 router.delete('/productos/:id', productController.deleteProduct)
 
+// Ruta para actualizar un producto
+router.put('/productos/:id', productController.updateProduct)
+
+// Ruta para obtener los productos de una categoria
+router.get('/productos/categoria/:id', productController.getProductByCategory)
+
 export default router;

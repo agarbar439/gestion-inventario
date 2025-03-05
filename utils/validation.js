@@ -51,3 +51,6 @@ export const validateCreateProduct = z.object({
         .nonnegative("El stock no puede ser negativo")
 });
 
+// Funcion para validar parcialmente (no es necesario tener todos los campos en caso de los update)
+export const validateUpdateProduct = validateCreateProduct.partial();
+

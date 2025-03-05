@@ -2,7 +2,7 @@ import Products from "../models/productModel.js";
 import Categories from "../models/categoryModel.js";
 
 const productService = {
-    // Función para listar todas los productos
+    // Servicio para listar todas los productos
     async listAllProducts() {
         try {
             // Buscar todos los productos, obteniendo ademas el id y nombre de la categoria
@@ -16,7 +16,7 @@ const productService = {
         }
     },
 
-    // Función para obtener los productos por id
+    // Servicio para obtener los productos por id
     async getProductById(id) {
         try {
             // Buscar el producto por la clave primaria pasando el id
@@ -31,7 +31,7 @@ const productService = {
         }
     },
 
-    // Función para crear un nuevo producto
+    // Servicio para crear un nuevo producto
     async createProduct(input) {
         // Verificar si ya existe un producto con el mismo nombre antes de crearlo
         const existingProduct = await Products.findOne({ where: { nombre: input.nombre } });
@@ -44,9 +44,9 @@ const productService = {
         return await Products.create(input);
     },
 
-    // Funcion para eliminar un producto
+    // Servicio para eliminar un producto
     async deleteProduct(id) {
-        // Eliminar el producto, buscandolo por su id
+        // Eliminar el producto, buscandolo por su idse
         const result = await Products.destroy({
             where: { id_producto: id }
         });
@@ -57,6 +57,34 @@ const productService = {
         }
 
         return { message: "Producto eliminado correctamente" }; // Devolver mensaje de éxito
+    },
+
+    // Servicio para actualizar un producto
+    async updateProduct(id, input) {
+        // Actualizar el producto, guardando el numero de columnas actualizadas
+        const { updatedRows } = await Products.update(input, {
+            where: { id_producto: id }
+        });
+
+        // Comprobar si hay alguna columna actualizada
+        if (updatedRows === 0) {
+            return;
+        }
+        // Devolver el producto actualizado
+        return await Products.findOne({ where: { id_producto: id } })
+    },
+
+    // Servicio para obtener los productos de una categoria
+    async getProductsByCategory(id) {
+        // Obtener los productos con el id de categoria
+        const products = await Products.findAndCountAll({
+            where: {
+                id_categoria: id
+            }
+        });
+
+        // Devolver los productos
+        return products;
     }
 }
 

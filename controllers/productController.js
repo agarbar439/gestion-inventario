@@ -1,5 +1,5 @@
 import productService from "../services/productService.js";
-import { validateCreateProduct } from "../utils/validation.js";
+import { validateCreateProduct, validateUpdateProduct } from "../utils/validation.js";
 import { z } from "zod";
 
 export class productController {
@@ -68,5 +68,51 @@ export class productController {
         }
     }
 
+    // Funcion para actualizar un producto
+    static async updateProduct(req, res) {
+        const { id } = req.params;
+        const updateData = req.body;
 
+        try {
+            // Validar solo los campos enviados en la actualización
+            const validationResult = validateUpdateProduct.safeParse(updateData);
+
+            if (!validationResult.success) {
+                return res.status(400).json({ error: validationResult.error.errors });
+            }
+
+            // Llamar al servicio para actualizar el producto
+            const updatedProduct = await productService.updateProduct(id, updateData);
+
+            if (!updatedProduct) {
+                return res.status(404).json({ message: "Producto no encontrado." });
+            }
+
+            // Devolver el producto
+            res.status(200).json(updatedProduct);
+        } catch (error) {
+            res.status(500).json({ message: "Error al actualizar el producto", error });
+        }
+    }
+
+    // Funcion para mostrar los productos de una categoria
+    static async getProductByCategory(req, res) {
+        try {
+            const id = Number(req.params.id); // Convertir id a número
+
+            if (isNaN(id) || id <= 0) {
+                return res.status(400).json({ message: "ID de categoría no válido." });
+            }
+
+            const products = await productService.getProductsByCategory(id);
+
+            if (products.count === 0) {
+                return res.status(404).json({ message: "No hay productos en la categoría." });
+            }
+
+            res.status(200).json(products);
+        } catch (error) {
+            res.status(500).json({ message: "Error al obtener los productos", error: error.message });
+        }
+    }
 }
