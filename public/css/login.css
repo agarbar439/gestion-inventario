@@ -1,90 +1,77 @@
-/* Reset básico */
-* {
+/* Establecer el fondo degradado */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Arial, sans-serif;
-}
-
-/* Estilos generales del cuerpo */
-body {
+    background: linear-gradient(to right, #FFA500, #FFD700);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
 }
 
 /* Contenedor del formulario */
 .form-container {
-    background: #fff;
-    padding: 2rem;
+    background-color: white;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
     text-align: center;
-    width: 100%;
-    max-width: 400px;
 }
 
 /* Título */
-h2 {
-    margin-bottom: 1rem;
-    color: #333;
+.form-container h2 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 15px;
 }
 
-/* Grupos de formulario */
+/* Estilos generales del formulario */
 .form-group {
+    margin-bottom: 15px;
     text-align: left;
-    margin-bottom: 1rem;
 }
 
-/* Etiquetas */
 .form-group label {
-    font-weight: bold;
     display: block;
+    font-weight: bold;
     margin-bottom: 5px;
 }
 
-/* Campos de entrada */
 .form-group input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
-    transition: 0.3s;
-}
-
-.form-group input:focus {
-    border-color: #007bff;
-    outline: none;
+    font-size: 14px;
 }
 
 /* Botón */
 .submit-btn {
-    width: 100%;
-    background-color: #007bff;
+    background-color: #FFA500;
     color: white;
-    padding: 10px;
     border: none;
+    padding: 10px;
+    width: 100%;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background 0.3s;
 }
 
 .submit-btn:hover {
-    background-color: #0056b3;
+    background-color: #FF8C00;
 }
 
 /* Enlace de registro */
 p {
     margin-top: 10px;
-    font-size: 0.9rem;
+    font-size: 14px;
 }
 
 p a {
-    color: #007bff;
+    color: #FFA500;
     text-decoration: none;
     font-weight: bold;
 }

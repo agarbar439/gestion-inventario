@@ -104,12 +104,15 @@ export class productController {
                 return res.status(400).json({ message: "ID de categoría no válido." });
             }
 
+            // Llamar al servicio para obtener los productos de la categoria
             const products = await productService.getProductsByCategory(id);
 
+            // Comprobar si no hay productos
             if (products.count === 0) {
                 return res.status(404).json({ message: "No hay productos en la categoría." });
             }
 
+            // Devolver los productos en json
             res.status(200).json(products);
         } catch (error) {
             res.status(500).json({ message: "Error al obtener los productos", error: error.message });

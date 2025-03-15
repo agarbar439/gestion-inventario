@@ -4,6 +4,7 @@ import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import productRoutes from './routes/productRoutes.js';
+import homeRoutes from './routes/homeRoutes.js';
 
 dotenv.config();
 
@@ -28,6 +29,9 @@ app.use(categoryRoutes)
 
 // Usar las rutas de los productos
 app.use(productRoutes)
+
+// Usar la ruta de la pantalla de inicio
+app.use(homeRoutes)
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);

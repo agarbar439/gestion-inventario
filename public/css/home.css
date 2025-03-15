@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.content {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+.card-custom {
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    width: 300px;
+    color: #000;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*  Categorías (Azul Claro) */
+.card-categorias {
+    background: linear-gradient(135deg, #DFF6FF, #A0E9FF);
+}
+
+/*  Productos (Rosa Claro) */
+.card-productos {
+    background: linear-gradient(135deg, #FFF4C2, #FFD700);
+}
+
+
+/* Íconos */
+.card-custom i {
+    font-size: 30px;
+}
+
+/* Colores de Iconos */
+.card-categorias i {
+    color: #4a90e2;
+}
+
+.card-productos i {
+    color: #ff9800;  
+}
+
+/* Títulos */
+.card-title {
+    font-size: 16px;
+    color: #444;
+    margin-top: 5px;
+}
+
+/* Números */
+.card-number {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+}

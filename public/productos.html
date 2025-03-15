@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="./css/sidebar.css"> <!-- Ruta css del sidebar -->
+    <link rel="stylesheet" href="./css/productos.css">
+</head>
+
+<body>
+    <!-- Barra Lateral -->
+    <div class="sidebar-container"></div>
+
+    <div class="content">
+        <div class="header">
+            <h1>Lista de Productos</h1>
+            <!--Alerta-->
+            <div id="alerta" class="oculto"></div>
+            <!-- Botón para abrir el modal -->
+            <button id="addProduct">AGREGAR PRODUCTO</button>
+
+            <!-- Modal oculto por defecto -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Agregar Producto</h2>
+                    <!-- Alerta dentro del modal -->
+                    <div id="alertaModal" class="alerta-modal"></div>
+
+                    <form id="productForm" method="post">
+                        <label for="nombre">Nombre del Producto:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion" required></textarea>
+
+                        <label for="id_categoria">Categoría:</label>
+                        <select id="categoriaSelect" name="categoria" required>
+
+                        </select>
+
+                        <label for="precio_compra">Precio Compra:</label>
+                        <input type="number" id="precio_compra" name="precio_compra" required step="0.01">
+
+                        <label for="precio_venta">Precio Venta:</label>
+                        <input type="number" id="precio_venta" name="precio_venta" required step="0.01">
+
+                        <label for="stock">Stock:</label>
+                        <input type="number" id="stock" name="stock" required>
+
+                        <button type="submit">Guardar Producto</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th>Precio Compra</th>
+                    <th>Precio Venta</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tablaProductos"></tbody>
+        </table>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/alertas.js" type="module"></script>
+    <script src="./js/productos.js" type="module"></script>
+
+</body>
+
+</html>

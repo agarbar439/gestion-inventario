@@ -1,0 +1,30 @@
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background-color: #f1ead6;
+    padding: 20px;
+}
+.sidebar a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+.sidebar a:hover {
+    background-color: #ffc107;
+    border-radius: 5px;
+}
+.content {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+.text-danger{
+    color: red;
+}
+
+h4{
+    font-size: 20px;
+}

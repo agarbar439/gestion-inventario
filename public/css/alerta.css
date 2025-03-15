@@ -1,0 +1,59 @@
+#alerta {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50; /* Verde para éxito */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateX(-50%) translateY(-20px);
+}
+/* Alerta dentro del modal */
+.alerta-modal {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    display: none;  /* Inicialmente oculta */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#alerta.mostrar {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Estilos según tipo de mensaje */
+.alerta-exito {
+    background-color: #4CAF50; /* Verde */
+}
+
+.alerta-error {
+    background-color: #f44336; /* Rojo */
+}
+
+.alerta-info {
+    background-color: #2196F3; /* Azul */
+}
+
+.alerta-warning {
+    background-color: #ff9800; /* Naranja */
+}
+
+/* Icono */
+#alerta i {
+    font-size: 20px;
+}

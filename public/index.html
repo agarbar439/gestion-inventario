@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Inventario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/sidebar.css"> <!-- Ruta css del sidebar -->
+    <link rel="stylesheet" href="./css/home.css"> <!-- Ruta css del home -->
+</head>
+
+<body>
+
+    <!-- Barra Lateral -->
+    <div class="sidebar-container"></div>
+
+    <!-- Contenido Principal -->
+    <div class="content">
+        <div class="d-flex gap-3">
+            <!-- Tarjeta de Categorías -->
+            <div class="card-custom card-categorias">
+                <i class="fa-solid fa-folder-open"></i>
+                <p class="card-title">Categorías</p>
+                <p class="card-number" id="nCategorias">0</p>
+            </div>
+    
+            <!-- Tarjeta de Productos -->
+            <div class="card-custom card-productos">
+                <i class="fas fa-box"></i>
+                <p class="card-title">Productos</p>
+                <p class="card-number" id="nProductos">0</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Ruta Script para obtener los datos -->
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/index.js"></script>
+
+
+</body>
+
+</html>

@@ -4,8 +4,8 @@ import { authenticate } from '../middlewares/authMiddleware.js'; // Importar el 
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('login');
+router.get('/login', (req, res) => {
+    res.render("login");
 });
 
 // Ejemplo proteger rutas
