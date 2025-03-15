@@ -113,7 +113,7 @@ async function cargarCategorias() {
     }
 }
 
-// 🔹 Función para obtener y mostrar productos
+// Función para obtener y mostrar productos
 async function cargarProductos() {
     try {
         const response = await fetch('/productos');
@@ -142,6 +142,10 @@ async function cargarProductos() {
                 </td>
             `;
             tabla.appendChild(fila);
+
+            // Asignar el evento click al botón de eliminación
+            const botonEliminar = fila.querySelector('.delete');
+            botonEliminar.addEventListener('click', () => eliminarProducto(producto.id_producto));
         });
 
     } catch (error) {
@@ -149,3 +153,20 @@ async function cargarProductos() {
     }
 }
 
+// Función para eliminar un producto
+async function eliminarProducto(id) {
+    try {
+        const response = await fetch(`/productos/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+        mostrarAlerta("Producto eliminado correctamente", "exito");
+        cargarProductos(); // Recargar productos después de la eliminación
+    } catch (error) {
+        console.error("Error al eliminar el producto:", error);
+    }
+}
