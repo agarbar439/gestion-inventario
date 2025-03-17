@@ -58,7 +58,7 @@ function crearTarjeta(categoria, imagenesCategorias) {
 
     // Crear enlace que envuelve toda la tarjeta
     const link = document.createElement("a");
-    link.href = `/productos/categoria/${categoria.id_categoria}`;
+    link.href = `productos_categoria.html?id_categoria=${categoria.id_categoria}`;
     link.classList.add("card-link");
 
     // Crear overlay y contenido

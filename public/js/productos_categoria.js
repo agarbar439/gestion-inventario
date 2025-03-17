@@ -102,23 +102,30 @@ async function cargarCategorias() {
 // Función para obtener y mostrar productos
 async function cargarProductos() {
     try {
-        const response = await fetch('/productos');
+        // Obtener el ID de la categoría desde la URL
+        const params = new URLSearchParams(window.location.search);
+        const idCategoria = params.get("id_categoria");
+
+        if (!idCategoria) {
+            console.error("No se proporcionó una categoría válida.");
+            return;
+        }
+
+        // Hacer la petición a la API con la categoría seleccionada
+        const response = await fetch(`/productos/categoria/${idCategoria}`);
         if (!response.ok) throw new Error(`Error: ${response.statusText}`);
 
         const productos = await response.json();
         const tabla = document.getElementById("tablaProductos");
         tabla.innerHTML = "";
 
-        productos.forEach(producto => {
+        productos.rows.forEach(producto => {
+            console.log(productos)
             const fila = document.createElement("tr");
             fila.innerHTML = `
                 <td>${producto.nombre}</td>
                 <td>${producto.descripcion}</td>
-                <td>
-                    <a href="/productos/categoria/${producto.categoria.id_categoria}">
-                        ${producto.categoria.nombre}
-                    </a>
-                </td>
+                <td>${producto.categoria.nombre}</td>
                 <td>${producto.precio_compra} €</td>
                 <td>${producto.precio_venta} €</td>
                 <td>${producto.stock}</td>

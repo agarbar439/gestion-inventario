@@ -80,7 +80,9 @@ const productService = {
         const products = await Products.findAndCountAll({
             where: {
                 id_categoria: id
-            }
+            },
+            include: [{ model: Categories, as: "categoria" }], // Obtener los datos de la categoria
+
         });
 
         // Devolver los productos

@@ -10,9 +10,9 @@ function mostrarAlerta(mensaje, tipo = "exito", enModal = false) {
     }
 
     // Resetear clases previas
-    alerta.className = "alerta-modal";  // Usamos la clase para la alerta del modal
+    alerta.className = "alerta-modal";  // Usar la clase para la alerta del modal
 
-    // Definir color y icono según el tipo
+    // Definir color y icono 
     let icono = "";
     switch (tipo) {
         case "exito":
