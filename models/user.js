@@ -3,6 +3,10 @@ import { sequelize } from '../config/db.js';
 
 // Representación de la base de datos con sequelize
 const User = sequelize.define('User', {
+    id_usuario: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
     nombre: {
         type: DataTypes.STRING,
         allowNull: false,

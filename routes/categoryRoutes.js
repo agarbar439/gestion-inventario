@@ -5,7 +5,7 @@ import { authenticate } from '../middlewares/authMiddleware.js'; // Importar el 
 const router = express.Router();
 
 // Rutas para obtener las categorias
-router.get('/categorias', categoriesController.getAllCategories)
+router.get('/categorias', authenticate, categoriesController.getAllCategories)
 router.get('/categorias/:id', categoriesController.getCategoriesById)
 
 export default router;

@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", async function cargarDatos() {
+    const token = localStorage.getItem('token'); // Obtener el token guardado
+
+    // Si no esta autenticado, redirigir a la pagina de inicio
+    if (!token) {
+        window.location.href = '/login.html'
+    }
+
     try {
         // Obtener las categorías
         const categorias = await obtenerCategorias();
-
         // Obtener el contenedor
         const contenido = document.querySelector(".content");
 
@@ -17,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function cargarDatos() {
         };
 
         // Crear tarjetas para cada categoría
-        categorias.forEach(categoria => {
+        categorias.categorias.forEach(categoria => {
             const card = crearTarjeta(categoria, imagenesCategorias);
             contenido.appendChild(card);
         });
@@ -29,12 +35,25 @@ document.addEventListener("DOMContentLoaded", async function cargarDatos() {
 
 // Función para obtener las categorías
 async function obtenerCategorias() {
-    const categoriasResponse = await fetch('/categorias');
+    const token = localStorage.getItem('token'); // Obtener el token guardado
+
+    const categoriasResponse = await fetch('/categorias', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`, // Incluir el token JWT en la cabecera
+            'Content-Type': 'application/json'
+        }
+    });
+
     if (!categoriasResponse.ok) {
         throw new Error(`Error en la solicitud: ${categoriasResponse.statusText}`);
     }
+
+
+
     return await categoriasResponse.json();
 }
+
 
 // Función para crear una tarjeta
 function crearTarjeta(categoria, imagenesCategorias) {
@@ -46,7 +65,6 @@ function crearTarjeta(categoria, imagenesCategorias) {
 
     // Establecer imagen de fondo 
     if (imagenesCategorias[categoria.nombre]) {
-        console.log("Imagen de fondo: ", imagenesCategorias[categoria.nombre]); // Verifica la URL
         cardDiv.style.backgroundImage = imagenesCategorias[categoria.nombre];
         cardDiv.style.backgroundSize = 'cover';
         cardDiv.style.backgroundPosition = 'center';

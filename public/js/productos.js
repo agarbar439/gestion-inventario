@@ -3,6 +3,12 @@ import { mostrarAlerta } from "./alertas.js"; // Importar las alertas
 // Función principal para inicializar la aplicación
 async function init() {
     try {
+        const token = localStorage.getItem('token'); // Obtener el token guardado
+        // Si no esta autenticado, redirigir a la pagina de inicio
+        if (!token) {
+            window.location.href = '/login.html'
+        }
+
         await cargarCategorias(); // Llenar el desplegable de categorías al cargar
         await cargarProductos(); // Llenar la tabla de productos
     } catch (error) {
@@ -80,7 +86,15 @@ function validarFormulario(data) {
 // Función para obtener las categorías desde la API
 async function cargarCategorias() {
     try {
-        const response = await fetch('/categorias');
+        const token = localStorage.getItem('token'); // Obtener el token guardado
+
+        const response = await fetch('/categorias', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Incluir el token JWT en la cabecera
+            }
+        });
+
         if (!response.ok) throw new Error(`Error: ${response.statusText}`);
 
         const categorias = await response.json();
@@ -88,7 +102,7 @@ async function cargarCategorias() {
 
         selectCategorias.innerHTML = ""; // Limpiar antes de agregar nuevas opciones
 
-        categorias.forEach(categoria => {
+        categorias.categorias.forEach(categoria => {
             const option = document.createElement("option");
             option.value = categoria.id_categoria;
             option.textContent = categoria.nombre;
@@ -102,7 +116,16 @@ async function cargarCategorias() {
 // Función para obtener y mostrar productos
 async function cargarProductos() {
     try {
-        const response = await fetch('/productos');
+        const token = localStorage.getItem('token'); // Obtener el token guardado
+
+        const response = await fetch('/productos', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Incluir el token JWT en la cabecera
+                'Content-Type': 'application/json'
+            }
+        });
+
         if (!response.ok) throw new Error(`Error: ${response.statusText}`);
 
         const productos = await response.json();
@@ -115,7 +138,7 @@ async function cargarProductos() {
                 <td>${producto.nombre}</td>
                 <td>${producto.descripcion}</td>
                 <td>
-                    <a href="/productos/categoria/${producto.categoria.id_categoria}">
+                    <a href="/productos_categoria.html?id_categoria=${producto.categoria.id_categoria}">
                         ${producto.categoria.nombre}
                     </a>
                 </td>
@@ -143,9 +166,14 @@ async function cargarProductos() {
 // Funcion para agregar un producto nuevo
 async function agregarProducto(data) {
     try {
+        const token = localStorage.getItem('token'); // Obtener el token guardado
+
         const response = await fetch("/productos/agregar", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${token}`, // Incluir el token JWT en la cabecera
+            },
             body: JSON.stringify(data)
         });
 
@@ -179,11 +207,14 @@ async function editarProducto(id, data) {
 
 // Función para eliminar un producto
 async function eliminarProducto(id) {
+    const token = localStorage.getItem('token'); // Obtener el token guardado
+
     try {
         const response = await fetch(`/productos/${id}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`, // Incluir el token JWT en la cabecera
             }
         });
 

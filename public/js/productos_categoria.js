@@ -3,6 +3,13 @@ import { mostrarAlerta } from "./alertas.js"; // Importar las alertas
 // Función principal para inicializar la aplicación
 async function init() {
     try {
+        const token = localStorage.getItem('token'); // Obtener el token guardado
+
+        // Si no esta autenticado, redirigir a la pagina de inicio
+        if (!token) {
+            window.location.href = '/login.html'
+        }
+
         await cargarCategorias(); // Llenar el desplegable de categorías al cargar
         await cargarProductos(); // Llenar la tabla de productos
     } catch (error) {
@@ -79,8 +86,16 @@ function validarFormulario(data) {
 
 // Función para obtener las categorías desde la API
 async function cargarCategorias() {
+    const token = localStorage.getItem('token'); // Obtener el token guardado
+
     try {
-        const response = await fetch('/categorias');
+        const response = await fetch('/categorias', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Incluir el token JWT en la cabecera
+            }
+        });
+
         if (!response.ok) throw new Error(`Error: ${response.statusText}`);
 
         const categorias = await response.json();

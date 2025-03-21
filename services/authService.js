@@ -22,15 +22,22 @@ export default createUser;*/
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import User from '../models/user.js';  // Importamos el modelo User
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Función para generar el JWT
 const generateToken = (user) => {
     return jwt.sign(
-        { id: user.id, nombre_usuario: user.nombre_usuario },
+        {
+            id: user.id_usuario,
+            nombre_usuario: user.nombre_usuario,
+            iat: Math.floor(Date.now() / 1000)
+        },
         process.env.JWT_SECRET,
-        { expiresIn: '1h' }  // Expiración del token (1 hora)
+        { expiresIn: '1h' }
     );
 };
+
 
 // Función para crear un nuevo usuario
 const createUser = async (nombre, apellidos, nombre_usuario, correo, contrasena, rol) => {

@@ -75,6 +75,7 @@ export const login = async (req, res) => {
 };
 */
 
+import User from "../models/user.js";
 import { generateToken, createUser, verifyUser } from "../services/authService.js";
 import { signupSchema, loginSchema } from "../utils/validation.js";
 import { z } from 'zod';
@@ -95,7 +96,7 @@ export const signup = async (req, res) => {
 
 
         // Validar si el usuario ya existe
-        const existingUser = await user.findOne({ where: { nombre_usuario } });
+        const existingUser = await User.findOne({ where: { nombre_usuario } });
         if (existingUser) {
             return res.status(400).json({ error: 'El nombre de usuario ya está en uso' });
         }
