@@ -76,9 +76,10 @@ export const login = async (req, res) => {
 */
 
 import User from "../models/user.js";
-import { generateToken, createUser, verifyUser } from "../services/authService.js";
+import { createUser, verifyUser } from "../services/authService.js";
 import { signupSchema, loginSchema } from "../utils/validation.js";
 import { z } from 'zod';
+import { generateToken } from "../utils/token.js";
 
 // Función para manejar el registro de usuarios
 export const signup = async (req, res) => {
@@ -132,6 +133,7 @@ export const login = async (req, res) => {
         if (!user) {
             return res.status(401).json({ error: 'Nombre de usuario o contraseña incorrectos.' });
         }
+        // res.cookie('jwt', token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
 
         // Generar el token JWT
         const token = generateToken(user);
@@ -155,3 +157,7 @@ export const login = async (req, res) => {
         res.status(500).json({ error: 'Error interno del servidor.' });
     }
 };
+
+
+
+

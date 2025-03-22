@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", async function cargarDatos() {
             window.location.href = '/login.html'
         }
 
-
-
         // Obtener número de categorías
         const categoriasResponse = await fetch('/categorias', {
             method: 'GET',
@@ -19,9 +17,9 @@ document.addEventListener("DOMContentLoaded", async function cargarDatos() {
         });
 
         const categorias = await categoriasResponse.json();
-        document.getElementById("nCategorias").textContent = categorias.categorias.length;
+        document.getElementById("nCategorias").textContent = categorias.length; // Mostrar en el index el numero de categorias
 
-        // Obtener número de productos
+        // Peticion para Obtener número de productos
         const productosResponse = await fetch('/productos', {
             method: 'GET',
             headers: {
@@ -31,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async function cargarDatos() {
 
 
         const productos = await productosResponse.json();
-        document.getElementById("nProductos").textContent = productos.length;
+        document.getElementById("nProductos").textContent = productos.length; // Mostrar en el index el numero de productos
     } catch (error) {
         console.log('Error al cargar datos:', error);
     }

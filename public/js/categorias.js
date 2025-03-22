@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function cargarDatos() {
         };
 
         // Crear tarjetas para cada categoría
-        categorias.categorias.forEach(categoria => {
+        categorias.forEach(categoria => {
             const card = crearTarjeta(categoria, imagenesCategorias);
             contenido.appendChild(card);
         });
@@ -48,8 +48,6 @@ async function obtenerCategorias() {
     if (!categoriasResponse.ok) {
         throw new Error(`Error en la solicitud: ${categoriasResponse.statusText}`);
     }
-
-
 
     return await categoriasResponse.json();
 }
