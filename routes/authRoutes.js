@@ -8,10 +8,6 @@ router.get('/login', (req, res) => {
     res.render("login");
 });
 
-// Ejemplo proteger rutas
-router.get('/home', authenticate, (req, res) => {
-    res.send("hola");
-});
 
 // Ruta para la vista de signup (GET)
 router.get('/signup', (req, res) => {

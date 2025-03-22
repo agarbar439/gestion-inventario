@@ -102,7 +102,7 @@ async function cargarCategorias() {
 
         selectCategorias.innerHTML = ""; // Limpiar antes de agregar nuevas opciones
 
-        categorias.categorias.forEach(categoria => {
+        categorias.forEach(categoria => {
             const option = document.createElement("option");
             option.value = categoria.id_categoria;
             option.textContent = categoria.nombre;
