@@ -47,6 +47,9 @@ El objetivo general de la aplicación es permitir gestionar el inventario, contr
     
 - **Frameworks CSS:**
     - Bootstrap
-    
 
+PÁGINA DE PRODUCTOS
+![image](https://github.com/user-attachments/assets/5f925ff8-1861-4079-9026-9f36be0a6dd5)
 
+PÁGINA DE CATEGORIAS
+![image](https://github.com/user-attachments/assets/17b7088b-fa7b-4dca-afb0-7bf72e6bde02)
