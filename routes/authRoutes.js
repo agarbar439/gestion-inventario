@@ -1,22 +1,30 @@
 import express from 'express';
-import { signup, login } from '../controllers/authController.js';
-import { authenticate } from '../middlewares/authMiddleware.js'; // Importar el middleware
+import path from 'path';  // Importa el módulo 'path'
+import { fileURLToPath } from "url";
+
+import { signup, login, getUsuarioInfo } from '../controllers/authController.js';
+import { authenticate, isAdmin } from '../middlewares/authMiddleware.js'; // Importar el middleware
+
+// Definir __dirname manualmente
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const router = express.Router();
 
 router.get('/login', (req, res) => {
-    res.render("login");
+    res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
-
-// Ruta para la vista de signup (GET)
-router.get('/signup', (req, res) => {
-    res.render('signup');  // Renderiza la vista 'signup.ejs'
+router.get("/usuarios/registrar", authenticate, isAdmin, (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/anadir_usuario.html"));
 });
 
 // Ruta para manejar la lógica del registro (POST)
-router.post('/signup', signup);  // La función 'signup' del controlador
+// Ruta para registrar usuarios (Solo Admins)
+router.post("/usuarios/registrar", authenticate, isAdmin, signup);
 
+// Ruta para obtener la informacion del usuario conectado
+router.get("/user", authenticate, getUsuarioInfo);
 
 // Ruta para manejar la lógica del login (POST)
 router.post('/login', login); // La función 'login' del controlador

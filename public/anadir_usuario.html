@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="./css/sidebar.css"> <!-- Ruta css del sidebar -->
+    <link rel="stylesheet" href="./css/registrar.css"> 
+
+</head>
+
+<body>
+  <!-- Barra Lateral -->
+  <div class="sidebar-container"></div>
+
+  <!-- Contenido Principal -->
+    <div class="content">
+        <div class="form-container">
+            <h2>Registrar usuario</h2>
+            <form id="registroForm" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombre_usuario">Nombre de usuario:</label>
+                    <input type="text" id="nombre_usuario" name="nombre_usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                </div>
+                <div class="form-group">
+                    <label for="rol">Rol:</label>
+                    <select id="rol" name="rol" required>
+                        <option value="administrador">Administrador</option>
+                        <option value="empleado">Empleado</option>
+                    </select>
+                </div>
+                <button type="submit">Registrar Usuario</button>
+                <button type="reset">Limpiar Formulario</button>
+
+            </form>
+            
+            
+        </div>
+<br>
+        <h2>Eliminar Usuario</h2>
+        <!--Eliminar usuario-->
+        <form id="formEliminarUsuario">
+            <select id="selectEliminarUser">
+                <option value="">Selecciona un usuario</option>
+            </select>
+            <input type="submit" id="botonEliminarUsuario" value="Enviar" />
+
+        </form>
+        <!--Alerta-->
+        <div id="alerta" class="oculto"></div>
+        
+    </div>
+      <!-- Ruta Script para obtener los datos -->
+      <script src="./js/sidebar.js"></script>
+      <script src="./js/logout.js"></script>
+      <script src="./js/registro.js"></script>
+      <script src="./js/eliminarUser.js" type="module"></script>
+      <script src="./js/alertas.js" type="module"></script>
+
+</body>
+
+</html>

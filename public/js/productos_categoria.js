@@ -116,6 +116,7 @@ async function cargarCategorias() {
 
 // Función para obtener y mostrar productos
 async function cargarProductos() {
+    const token = localStorage.getItem('token'); // Obtener el token guardado
     try {
         // Obtener el ID de la categoría desde la URL
         const params = new URLSearchParams(window.location.search);
@@ -127,7 +128,13 @@ async function cargarProductos() {
         }
 
         // Hacer la petición a la API con la categoría seleccionada
-        const response = await fetch(`/productos/categoria/${idCategoria}`);
+        const response = await fetch(`/productos/categoria/${idCategoria}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Incluir el token JWT en la cabecera
+            }
+        });
+
         if (!response.ok) throw new Error(`Error: ${response.statusText}`);
 
         const productos = await response.json();
@@ -164,12 +171,18 @@ async function cargarProductos() {
 
 // Funcion para agregar un producto nuevo
 async function agregarProducto(data) {
+    const token = localStorage.getItem('token'); // Obtener el token guardado
+
     try {
         const response = await fetch("/productos/agregar", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}` // Incluir el token JWT en la cabecera
+            },
             body: JSON.stringify(data)
         });
+
 
         if (!response.ok) throw new Error(`Error: ${response.statusText}`);
 
@@ -182,31 +195,17 @@ async function agregarProducto(data) {
     }
 }
 
-// Función para editar un producto
-async function editarProducto(id, data) {
-    try {
-        const response = await fetch(`/productos/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-
-        if (!response.ok) throw new Error(`Error: ${response.statusText}`);
-        mostrarAlerta("Producto actualizado correctamente", "exito");
-        cargarProductos(); // Recargar productos después de la eliminación
-    } catch (error) {
-        console.error("Error al editar el producto:", error);
-    }
-}
-
 // Función para eliminar un producto
 async function eliminarProducto(id) {
+    const token = localStorage.getItem('token'); // Obtener el token guardado
+
     try {
         const response = await fetch(`/productos/${id}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
-            }
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}` // Incluir el token JWT en la cabecera
+            },
         });
 
         if (!response.ok) throw new Error(`Error: ${response.statusText}`);

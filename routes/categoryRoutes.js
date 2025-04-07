@@ -1,6 +1,6 @@
 import express from 'express';
 import { categoriesController } from '../controllers/categoryController.js';
-import { authenticate } from '../middlewares/authMiddleware.js'; // Importar el middleware
+import { authenticate, isAdmin } from '../middlewares/authMiddleware.js'; // Importar el middleware
 
 const router = express.Router();
 

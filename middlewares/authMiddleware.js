@@ -25,10 +25,22 @@ export const authenticate = (req, res, next) => {
 
 // Middleware para verificar si el usuario es administrador
 export const isAdmin = (req, res, next) => {
+    console.log("Middleware isAdmin ejecutado");
+    console.log("Usuario en la solicitud:", req.user);
 
-    if (!req.user || req.user.rol !== 'administrador') {
+    if (!req.user) {
+        console.log("❌ Usuario no autenticado");
+        return res.status(401).json({ message: "Usuario no autenticado." });
+    }
+
+    console.log("Rol del usuario:", req.user.rol);
+
+    if (req.user.rol !== "administrador") {
+        console.log("❌ Usuario sin permisos de administrador");
         return res.status(403).json({ message: "No tienes permisos para acceder a esta página." });
     }
 
+    console.log("✅ Usuario autorizado como administrador");
     next();
 };
+

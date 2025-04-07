@@ -1,25 +1,3 @@
-/*import connectBBDD from "../config/db.js";
-
-// Funcion para crear usuario
-async function createUser(nombre, apellidos, nombre_usuario, correo, contrasena, rol) {
-    const connection = await connectBBDD();
-    try {
-        const [result] = await connection.execute(
-            'INSERT INTO usuarios (nombre, apellidos, nombre_usuario, correo, contrasena, rol) VALUES (?, ?, ?, ?, ?, ?)',
-            [nombre, apellidos, nombre_usuario, correo, contrasena, rol]
-        );
-        console.log('Usuario creado con ID:', result.insertId);
-    } catch (error) {
-        console.error('Error al crear el usuario:', error);
-    } finally {
-        connection.end();
-    }
-}
-
-// Exportar el modulo
-export default createUser;*/
-
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import User from '../models/user.js';  // Importamos el modelo User
 
@@ -62,6 +40,8 @@ const verifyUser = async (nombre_usuario, contrasena) => {
         throw new Error('Nombre de usuario o contraseña incorrectos');  // Siempre devuelve este mensaje
     }
 };
+
+
 
 
 export { createUser, verifyUser };

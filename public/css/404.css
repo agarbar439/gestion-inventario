@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.content {
+    text-align: center;
+    margin-left: 270px;
+    padding: 20px;
+
+}
+
+/* Estilo para el título */
+.content h1 {
+    font-size: 48px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el texto */
+.content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el enlace */
+.content a {
+    font-size: 16px;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}

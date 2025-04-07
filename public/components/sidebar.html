@@ -1,11 +1,22 @@
- <!-- Botón de "hamburguesa" -->
-<div class="sidebar">
+<!-- Botón de "hamburguesa" -->
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
     <h4>Gestión de Inventario</h4>
     <a href="index.html" class="active">🏠 Inicio</a>
     <a href="productos.html">📦 Productos</a>
     <a href="categorias.html">📂 Categorías</a>
     <a href="#">📊 Reportes</a>
+
+    <!-- Enlace solo para administradores -->
+    <div id="admin-links" style="display: none;">
+        <a href="anadir_usuario.html">👨‍💼 Añadir/Eliminar Usuario</a>
+    </div>
+
     <a href="#">⚙️ Configuración</a>
     <a href="#" class="text-danger" onclick="logout()">🚪 Cerrar Sesión</a>
 </div>
+<div id="overlay" onclick="toggleSidebar()"></div>
+
 <script src="../js/logout.js"></script>

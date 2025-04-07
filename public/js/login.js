@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", async function cargarDatos() {
+    const token = localStorage.getItem('token'); // Obtener el token guardado
+
+    // Si ya está autenticado, redirigir a la página principal
+    if (token) {
+        // Aquí podrías validar el token con un servidor si lo deseas
+        // Si es válido, redirigir al usuario
+        window.location.href = '/';
+        return;
+    }
+});
+
 document.querySelector("form").addEventListener("submit", async function (event) {
     event.preventDefault(); // Evita que la página se recargue
 
@@ -14,9 +26,11 @@ document.querySelector("form").addEventListener("submit", async function (event)
         const data = await response.json();
 
         if (response.ok) {
-            localStorage.setItem("token", data.token); // Guarda el token en el navegador
-            alert("Inicio de sesión exitoso");
-            window.location.href = "/"; // Redirigir a otra página
+            // Guarda el token en el navegador
+            localStorage.setItem("token", data.token);
+
+            // Redirigir a la página principal
+            window.location.href = "/";
         } else {
             alert(data.error); // Muestra el mensaje de error si hay problemas
         }

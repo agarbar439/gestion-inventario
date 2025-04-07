@@ -121,15 +121,45 @@ body {
         grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
     }
 }
+/* Estilo base ya está bien para desktop */
+/* Agrega o mejora estas media queries al final del CSS */
 
-@media (max-width: 768px) {
+/* Tablets */
+@media (max-width: 992px) {
     .content {
-        grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas (móviles) */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* Móviles */
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .card-content .card-title {
+        font-size: 18px;
+    }
+}
+
+/* Muy pequeño (teléfonos pequeños) */
 @media (max-width: 480px) {
     .card {
-        height: 180px; /* Reduce la altura de las tarjetas en pantallas muy pequeñas */
+        height: 150px;
+    }
+
+    .card-content {
+        padding: 10px;
+    }
+
+    .card-content .card-title {
+        font-size: 16px;
     }
 }
