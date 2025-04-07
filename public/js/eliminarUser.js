@@ -69,7 +69,14 @@ async function eliminarUsuario(id) {
     }
     mostrarAlerta("Usuario Eliminado correctamente", "exito");
 
+    // Eliminar la opción del usuario en el select
+    const optionToRemove = document.querySelector(`#selectEliminarUser option[value="${id}"]`);
+    if (optionToRemove) {
+        optionToRemove.remove(); // Eliminar la opción correspondiente
+    }
 
+    // Limpiar la selección del select
+    selectEliminarUser.value = "";
 }
 
 // Agregar el event listener al formulario para evitar el envío por defecto
