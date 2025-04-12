@@ -22,4 +22,5 @@ router.put('/productos/:id', authenticate, productController.updateProduct)
 // Ruta para obtener productos por categoría (solo autenticados)
 router.get('/productos/categoria/:id', authenticate, productController.getProductByCategory)
 
+
 export default router;

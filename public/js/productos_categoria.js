@@ -17,6 +17,7 @@ async function init() {
     }
 
     configurarModal(); // Configurar el modal de productos
+    configurarModal2(); // Configurar el modal para editar producto
     configurarFormulario(); // Configurar el formulario de productos
 }
 
@@ -83,6 +84,87 @@ function validarFormulario(data) {
         data.precio_venta > 0 && data.stock >= 0;
 }
 
+// Configuracion del modal de edicion
+function configurarModal2() {
+    const modal = document.getElementById("modal2");
+    const closeModal = document.querySelector(".close");
+
+    // Cerrar modal al hacer clic en el botón de cerrar
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Cerrar modal al hacer clic fuera de la caja del modal
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+
+    // Manejar la actualización del producto
+    document.getElementById("productFormEdit").addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const token = localStorage.getItem('token'); // Obtener el token guardado
+
+        const id = document.getElementById("editProductId").value; // Obtener ID del producto
+        const data = {
+            nombre: document.getElementById("editNombre").value,
+            descripcion: document.getElementById("editDescripcion").value,
+            id_categoria: parseInt(document.getElementById("editCategoriaSelect").value),
+            precio_compra: parseFloat(document.getElementById("editPrecioCompra").value),
+            precio_venta: parseFloat(document.getElementById("editPrecioVenta").value),
+            stock: parseInt(document.getElementById("editStock").value)
+        };
+        try {
+            const response = await fetch(`/productos/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+
+            modal.style.display = "none"; // Cerrar modal tras la edición
+            mostrarAlerta("Producto editado correctamente", "exito"); // Mostrar alerta
+
+            cargarProductos(); // Recargar lista de productos
+        } catch (error) {
+            console.error("Error al editar el producto:", error);
+            alert("No se pudo actualizar el producto");
+        }
+    });
+}
+
+// Función para abrir el modal con los datos del producto
+function abrirModalEdicion(producto) {
+    document.getElementById("editProductId").value = producto.id_producto;
+    document.getElementById("editNombre").value = producto.nombre;
+    document.getElementById("editDescripcion").value = producto.descripcion;
+    document.getElementById("editCategoriaSelect").value = producto.categoria.id_categoria;
+
+    document.getElementById("editPrecioCompra").value = producto.precio_compra;
+    document.getElementById("editPrecioVenta").value = producto.precio_venta;
+    document.getElementById("editStock").value = producto.stock;
+
+    document.getElementById("modal2").style.display = "flex";
+}
+// Funcion para llenar el select de categorias al añadir o editar un producto
+function llenarSelect(selectId, categorias) {
+    const select = document.getElementById(selectId);
+    select.innerHTML = ""; // Limpiar antes de agregar nuevas opciones
+
+    categorias.forEach(categoria => {
+        const option = document.createElement("option");
+        option.value = categoria.id_categoria;
+        option.textContent = categoria.nombre;
+        select.appendChild(option);
+    });
+}
+
 
 // Función para obtener las categorías desde la API
 async function cargarCategorias() {
@@ -109,6 +191,10 @@ async function cargarCategorias() {
             option.textContent = categoria.nombre;
             selectCategorias.appendChild(option);
         });
+
+        // Llenar el select de agregar  editar producto con las categorias
+        llenarSelect("categoriaSelect", categorias);
+        llenarSelect("editCategoriaSelect", categorias)
     } catch (error) {
         console.error("Error al cargar categorías:", error);
     }
@@ -142,7 +228,7 @@ async function cargarProductos() {
         tabla.innerHTML = "";
 
         productos.rows.forEach(producto => {
-            console.log(productos)
+            // console.log(productos)
             const fila = document.createElement("tr");
             fila.innerHTML = `
                 <td>${producto.nombre}</td>
@@ -162,6 +248,9 @@ async function cargarProductos() {
             const botonEliminar = fila.querySelector('.delete');
             botonEliminar.addEventListener('click', () => eliminarProducto(producto.id_producto));
 
+            // Asignar el evento click al botón de editar
+            const botonEditar = fila.querySelector('.edit');
+            botonEditar.addEventListener('click', () => abrirModalEdicion(producto));
         });
 
     } catch (error) {

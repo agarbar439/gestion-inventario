@@ -16,7 +16,7 @@ async function init() {
     }
 
     configurarModal(); // Configurar el modal de productos
-    configurarModal2();
+    configurarModal2(); // Configurar modal para editar producto
     configurarFormulario(); // Configurar el formulario de productos
 }
 
@@ -103,6 +103,7 @@ function configurarModal2() {
     // Manejar la actualización del producto
     document.getElementById("productFormEdit").addEventListener("submit", async function (event) {
         event.preventDefault();
+        const token = localStorage.getItem('token'); // Obtener el token guardado
 
         const id = document.getElementById("editProductId").value; // Obtener ID del producto
         const data = {
@@ -116,7 +117,10 @@ function configurarModal2() {
         try {
             const response = await fetch(`/productos/${id}`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`,
+                },
                 body: JSON.stringify(data)
             });
 

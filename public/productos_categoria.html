@@ -55,40 +55,41 @@
                 </div>
             </div>
 
-            <!-- Modal de Edición -->
-            <div id="editModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeEditModal">&times;</span>
-                    <h2 id="titulo-edit-modal">Editar Producto</h2>
-                    <!-- Alerta dentro del modal -->
-                    <div id="alertaEditModal" class="alerta-modal"></div>
+          <!-- Modal de Edición -->
+<div id="modal2" class="modal2">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="titulo-edit-modal">Editar Producto</h2>
 
-                    <form id="editProductForm" method="post">
-                        <input type="hidden" id="editProductId" name="id_producto"> <!-- Campo oculto para el ID -->
+        <!-- Alerta dentro del modal -->
+        <div id="alertaEditModal" class="alerta-modal"></div>
 
-                        <label for="editNombre">Nombre del Producto:</label>
-                        <input type="text" id="editNombre" name="nombre" required>
+        <form id="productFormEdit">
+            <input type="hidden" id="editProductId"> <!-- Campo oculto para el ID -->
 
-                        <label for="editDescripcion">Descripción:</label>
-                        <textarea id="editDescripcion" name="descripcion" required></textarea>
+            <label for="editNombre">Nombre del Producto:</label>
+            <input type="text" id="editNombre" required>
 
-                        <label for="editCategoria">Categoría:</label>
-                        <select id="editCategoriaSelect" name="categoria" required>
-                        </select>
+            <label for="editDescripcion">Descripción:</label>
+            <textarea id="editDescripcion" required></textarea>
 
-                        <label for="editPrecioCompra">Precio Compra:</label>
-                        <input type="number" id="editPrecioCompra" name="precio_compra" required step="0.01">
+            <label for="editCategoria">Categoría:</label>
+            <select id="editCategoriaSelect" required></select>
 
-                        <label for="editPrecioVenta">Precio Venta:</label>
-                        <input type="number" id="editPrecioVenta" name="precio_venta" required step="0.01">
+            <label for="editPrecioCompra">Precio Compra:</label>
+            <input type="number" id="editPrecioCompra" required step="0.01">
 
-                        <label for="editStock">Stock:</label>
-                        <input type="number" id="editStock" name="stock" required>
+            <label for="editPrecioVenta">Precio Venta:</label>
+            <input type="number" id="editPrecioVenta" required step="0.01">
 
-                        <button type="submit">Actualizar Producto</button>
-                    </form>
-                </div>
-            </div>
+            <label for="editStock">Stock:</label>
+            <input type="number" id="editStock" required>
+
+            <button type="submit">Actualizar Producto</button>
+        </form>
+    </div>
+</div>
+
 
         </div>
         <table>
