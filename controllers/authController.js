@@ -79,8 +79,8 @@ export const login = async (req, res) => {
 
 // Obtener rol y nombre_usuario del usuario actual en la sesión
 export const getUsuarioInfo = (req, res) => {
-    const { nombre_usuario, rol } = req.user;
+    const { id, nombre, apellidos, correo, nombre_usuario, rol } = req.user;
 
     // Devolver los datos del usuario
-    res.status(200).json({ nombre_usuario, rol });
+    res.status(200).json({ id, nombre, apellidos, correo, nombre_usuario, rol });
 }

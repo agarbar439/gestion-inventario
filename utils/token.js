@@ -8,6 +8,9 @@ const generateToken = (user) => {
     return jwt.sign(
         {
             id: user.id_usuario,
+            nombre: user.nombre,
+            apellidos: user.apellidos,
+            correo: user.correo,
             nombre_usuario: user.nombre_usuario,
             rol: user.rol,
             iat: Math.floor(Date.now() / 1000)

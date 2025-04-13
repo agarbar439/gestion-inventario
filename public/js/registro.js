@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    // 🔹 Verificar si estamos en añadir_usuario.html y protegerlo
+    // Verificar si estamos en añadir_usuario.html y protegerlo
     if (window.location.pathname.includes("anadir_usuario.html")) {
         try {
             const response = await fetch("/user", {
