@@ -61,8 +61,17 @@ const productService = {
 
     // Servicio para actualizar un producto
     async updateProduct(id, input) {
+        // Usar solo los campos que se pueden actualizar
+        const fieldsToUpdate = {
+            nombre: input.nombre,
+            apellidos: input.apellidos,
+            nombre_usuario: input.nombre_usuario,
+            correo: input.correo,
+            contrasena: input.contrasena
+        }
+
         // Actualizar el producto, guardando el numero de columnas actualizadas
-        const { updatedRows } = await Products.update(input, {
+        const [updatedRows] = await Products.update(fieldsToUpdate, {
             where: { id_producto: id }
         });
 

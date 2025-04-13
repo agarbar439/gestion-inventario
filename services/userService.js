@@ -13,6 +13,7 @@ const allUsers = async () => {
     }
 }
 
+// Funcion para eliminar un usuario
 const deleteUser = async (id) => {
     try {
         // Eliminar el producto, buscandolo por su idse
@@ -32,4 +33,20 @@ const deleteUser = async (id) => {
     }
 }
 
-export { allUsers, deleteUser }
+// Funcion para actualizar datos de usuario
+const modifyUser = async (id, input) => {
+    // Actualizar el producto, guardando el numero de columnas actualizadas
+    const { updateRows } = await User.update(input, {
+        where: { id_usuario: id }
+    });
+
+    // Comprobar si hay columnas actualizadas
+    if (updateRows === 0) {
+        return;
+    }
+
+    // Devolver el usuario actualizado
+    return await User.findOne({ where: { id_usuario: id } })
+}
+
+export { allUsers, deleteUser, modifyUser }

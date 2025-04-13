@@ -51,6 +51,13 @@ export const validateCreateProduct = z.object({
         .nonnegative("El stock no puede ser negativo")
 });
 
+export const validateUpdateUser = z.object({
+    nombre: z.string().optional(),
+    apellidos: z.string().optional(),
+    nombre_usuario: z.string().optional(),
+    correo: z.string().email().optional(),
+    contrasena: z.string().optional()
+}).strict(); // <- esto lanza error si mandan rol o id_usuario
+
 // Funcion para validar parcialmente (no es necesario tener todos los campos en caso de los update)
 export const validateUpdateProduct = validateCreateProduct.partial();
-
