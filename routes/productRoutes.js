@@ -1,8 +1,11 @@
 import express from 'express';
 import { productController } from '../controllers/productController.js';
 import { authenticate } from '../middlewares/authMiddleware.js'; // Importar el middleware
+import { messageController } from '../controllers/messageController.js';
 
 const router = express.Router();
+router.get('/api/mensajes', authenticate, messageController.verMensajes);
+router.post('/mensajes', authenticate, messageController.enviarMensaje)
 
 // Ruta para obtener todos los productos (solo autenticados)
 router.get('/productos', authenticate, productController.getAllProducts)

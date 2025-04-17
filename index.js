@@ -7,6 +7,7 @@ import productRoutes from './routes/productRoutes.js';
 import homeRoutes from './routes/homeRoutes.js';
 import errorRoutes from './routes/errorRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import messageRoutes from './routes/messageRoutes.js';
 
 dotenv.config();
 
@@ -42,8 +43,9 @@ app.use(userRoutes)
 // Usar las rutas de error
 app.use(errorRoutes)
 
+// Usar las rutas de los mensajes
+app.use(messageRoutes)
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });
-1
