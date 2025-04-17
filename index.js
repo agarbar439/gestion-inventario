@@ -43,8 +43,6 @@ app.use(userRoutes)
 // Usar las rutas de error
 app.use(errorRoutes)
 
-// Usar las rutas de los mensajes
-app.use(messageRoutes)
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);

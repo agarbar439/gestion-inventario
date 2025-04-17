@@ -4,7 +4,7 @@ import { authenticate } from '../middlewares/authMiddleware.js'; // Importar el 
 
 const router = express.Router();
 
-//router.get('/api/mensajes', authenticate, messageController.verMensajes);
+router.get('/api/mensajes', authenticate, messageController.verMensajes);
 //router.post('/mensajes', authenticate, messageController.enviarMensaje)
 
 
