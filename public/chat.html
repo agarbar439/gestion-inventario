@@ -51,6 +51,9 @@
         .mensajeUsuario {
             background-color: #bee5eb;
             align-self: flex-end;
+            padding: 10px 15px;
+            border-radius: 15px;
+
         }
 
         .info-mensaje {
@@ -58,6 +61,7 @@
             color: #555;
             margin-bottom: 5px;
             font-weight: bold;
+
         }
 
         .fecha {
@@ -115,18 +119,7 @@
 
     <div id="contenido">
         <div id="mensajes">
-            <div class="mensaje">
-                <div class="info-mensaje">
-                    Bot del Chat <span class="fecha">17/04/2025 14:30</span>
-                </div>
-                ¡Hola! ¿En qué puedo ayudarte?
-            </div>
-            <div class="mensajeUsuario">
-                <div class="info-mensaje">
-                    Tú <span class="fecha">17/04/2025 14:31</span>
-                </div>
-                Necesito un diseño de chat.
-            </div>
+
         </div>
         <div id="entrada">
             <textarea placeholder="Escribe tu mensaje..."></textarea>
@@ -137,7 +130,7 @@
     <!-- Ruta Script para obtener los datos -->
     <script src="./js/sidebar.js"></script>
     <script src="./js/registro.js"></script>
-    <script src="./js/chat.js"></script>
+    <script src="./js/chat/mostrarMensajesChat.js"></script>
     <script src="./js/logout.js"></script>
 </body>
 
