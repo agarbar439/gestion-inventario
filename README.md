@@ -37,6 +37,9 @@ El objetivo general de la aplicación es permitir gestionar el inventario, contr
 - **Funcionalidades:**
    - API RESt para gestionar inventario, productos y categorias.
     - Operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+    - Chat grupal entre usuarios.
+    - Crear / Eliminar usuarios (Solo Admin).
+    - Modificar Datos de Usuarios
     - Sistema de autenticación (JWT).
     - Base de datos: MySQL.
 
