@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    height: 100vh;
+    display: flex;
+}
+
+/* Contenedor principal del chat */
+#contenido {
+    flex: 1;
+    margin-left: 300px; /* espacio reservado para la sidebar */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fff;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+/* Ajuste para pantallas pequeñas (responsive) */
+@media (max-width: 768px) {
+    #contenido {
+        margin-left: 0;
+    }
+}
+
+/* Área de mensajes */
+#mensajes {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #e6ecf0;
+}
+
+/* Estilo para cada burbuja de mensaje */
+.mensaje {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: #d1e7dd;
+    align-self: flex-start;
+    word-wrap: break-word;
+}
+
+/* Mensaje del usuario (alineado a la derecha) */
+.mensajeUsuario {
+    background-color: #bee5eb;
+    align-self: flex-end;
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+/* Información adicional del mensaje */
+.info-mensaje {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.fecha {
+    font-weight: normal;
+    float: right;
+    font-size: 11px;
+    color: #888;
+    margin-left: 40px;
+}
+
+/* Área de entrada del mensaje */
+#entrada {
+    display: flex;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-top: 1px solid #ccc;
+}
+
+/* Textarea para escribir el mensaje */
+#entrada textarea {
+    flex: 1;
+    resize: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+/* Botón de enviar */
+#entrada button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#entrada button:hover {
+    background-color: #f1ead6;
+    color: black;
+}

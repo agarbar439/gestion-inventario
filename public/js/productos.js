@@ -103,9 +103,12 @@ function configurarModal2() {
     // Manejar la actualización del producto
     document.getElementById("productFormEdit").addEventListener("submit", async function (event) {
         event.preventDefault();
+
         const token = localStorage.getItem('token'); // Obtener el token guardado
 
         const id = document.getElementById("editProductId").value; // Obtener ID del producto
+        console.log("ID a editar:", id);
+
         const data = {
             nombre: document.getElementById("editNombre").value,
             descripcion: document.getElementById("editDescripcion").value,
@@ -267,25 +270,6 @@ async function agregarProducto(data) {
         mostrarAlerta("Error: Error al agregar el producto", "error", true);
     }
 }
-
-// Función para editar un producto
-/*async function editarProducto(id, data) {
-    try {
-        const response = await fetch(`/productos/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-
-        if (!response.ok) throw new Error(`Error: ${response.statusText}`);
-        document.getElementById("modal").style.display = "none";
-
-        mostrarAlerta("Producto actualizado correctamente", "exito");
-        cargarProductos(); // Recargar productos después de la eliminación
-    } catch (error) {
-        console.error("Error al editar el producto:", error);
-    }
-}*/
 
 // Función para eliminar un producto
 async function eliminarProducto(id) {
