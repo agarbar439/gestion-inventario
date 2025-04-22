@@ -32,7 +32,7 @@ document.querySelector("form").addEventListener("submit", async function (event)
             // Redirigir a la página principal
             window.location.href = "/";
         } else {
-            alert(data.error); // Muestra el mensaje de error si hay problemas
+            alert("data.error"); // Muestra el mensaje de error si hay problemas
         }
     } catch (error) {
         console.error("Error al iniciar sesión:", error);
