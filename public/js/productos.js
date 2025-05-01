@@ -107,7 +107,6 @@ function configurarModal2() {
         const token = localStorage.getItem('token'); // Obtener el token guardado
 
         const id = document.getElementById("editProductId").value; // Obtener ID del producto
-        console.log("ID a editar:", id);
 
         const data = {
             nombre: document.getElementById("editNombre").value,

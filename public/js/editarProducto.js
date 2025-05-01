@@ -1,12 +1,9 @@
 
 // Función principal para inicializar la aplicación
 async function init() {
-
-
     configurarModal(); // Configurar el modal de productos
     configurarFormulario(); // Configurar el formulario de productos
     configurarModal2(); // Configurar el modal de productos
-
 }
 
 // Esperar a que el DOM esté completamente cargado
@@ -52,14 +49,14 @@ function configurarModal2() {
     });
 
     // Manejar la actualización del producto
-    document.getElementById("productForm").addEventListener("submit", async function (event) {
+    document.getElementById("productFormEdit").addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const id = document.getElementById("editProductId").value; // Obtener ID del producto
         const data = {
             nombre: document.getElementById("editNombre").value,
             descripcion: document.getElementById("editDescripcion").value,
-            categoria: document.getElementById("editCategoriaSelect").value,
+            id_categoria: document.getElementById("editCategoriaSelect").value,
             precio_compra: parseFloat(document.getElementById("editPrecioCompra").value),
             precio_venta: parseFloat(document.getElementById("editPrecioVenta").value),
             stock: parseInt(document.getElementById("editStock").value)
@@ -95,6 +92,7 @@ function abrirModalEdicion(producto) {
     document.getElementById("editStock").value = producto.stock;
 
     document.getElementById("modal2").style.display = "flex";
+
 }
 
 // Configuración del formulario

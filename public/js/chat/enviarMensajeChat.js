@@ -1,3 +1,5 @@
+import { obtenerMensajes } from "./mostrarMensajesChat.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     const botonEnviar = document.getElementById("enviarMensaje");
 
@@ -5,7 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
         await enviarMensaje();
         //        await mostrarMensajesOrdenados(); // Para recargar los mensajes con el nuevo incluido
         document.getElementById("contenidoMensaje").value = ""; // Limpiar textarea
+        await obtenerMensajes(); // 🔁 Recargar mensajes después de enviar
+
     });
+
+
 });
 // Funcion para enviar el mensaje
 

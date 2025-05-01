@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function cargarDatos() {
 });
 
 // Funcion para obtener los mensajes desde la API
-async function obtenerMensajes() {
+export async function obtenerMensajes() {
     const token = localStorage.getItem('token'); // Obtener el token guardado
 
     // Si no esta autenticado, redirigir a la pagina de inicio
@@ -134,3 +134,5 @@ async function mostrarMensajesOrdenados() {
     // Scroll al final del chat
     contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
 }
+
+

@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Nombre de usuario:', data.nombre_usuario);
-            console.log('Rol del usuario:', data.rol);
+            //console.log('Nombre de usuario:', data.nombre_usuario);
+            //console.log('Rol del usuario:', data.rol);
             // Si el rol es administrador, mostrar los links de administrador
             if (data.rol === "administrador") {
                 document.getElementById("admin-links").style.display = "block";
