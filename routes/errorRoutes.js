@@ -19,9 +19,9 @@ router.use((req, res) => {
 });
 
 // Ruta para manejar el error 403 (Acceso Denegado)
-/*router.use((req, res) => {
+router.use((req, res) => {
     res.status(403).sendFile(path.join(__dirname, '..', 'public', '403.html'));
-});*/
+});
 
 
 export default router;

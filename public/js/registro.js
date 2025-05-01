@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const token = localStorage.getItem("token");
 
     if (!token) {
-        alert("Debes iniciar sesión.");
+        //alert("Debes iniciar sesión.");
         window.location.href = "/login";
         return;
     }
@@ -22,9 +22,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             const data = await response.json();
 
+            // Si el usuario no es rol administrador
             if (data.rol !== "administrador") {
-                alert("No tienes permisos para acceder a esta página.");
-                window.location.href = "/";
+                //alert("No tienes permisos para acceder a esta página.");
+                window.location.href = "/403.html"; // Redirigir a pagina 403
                 return;
             }
         } catch (error) {
@@ -35,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // 🔹 Manejo del formulario de registro de usuario
+    // Manejo del formulario de registro de usuario
     const registroForm = document.getElementById("registroForm");
     if (registroForm) {
         registroForm.addEventListener("submit", async function (event) {
