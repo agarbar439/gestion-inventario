@@ -6,9 +6,15 @@ body {
     padding: 0;
 }
 
+/* Botón hamburguesa */
+.menu-btn {
+    position: relative;
+    text-align: left;
+}
+
 /* Estilo para el contenido principal */
 .content {
-    margin-left: 270px; /* Dejamos espacio para el sidebar */
+    margin-left: 270px; 
     padding: 20px;
     background-color: #ffffff;
     min-height: 100vh;

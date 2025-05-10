@@ -14,9 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 // Funcion para enviar el mensaje
+const socket = io();
 
+// Prompt for setting a username
+let username;
 async function enviarMensaje() {
     // Obtener los datos del mensaje
+
     let datos = await recibirMensaje();
 
     const token = localStorage.getItem('token'); // Obtener el token guardado
@@ -42,6 +46,8 @@ async function enviarMensaje() {
         if (!mensajes.ok) {
             throw new Error(`Error en la solicitud: ${mensajes.statusText}`);
         }
+
+
         // Devolver los mensajes
         return mensajes.json();
     } catch (error) {

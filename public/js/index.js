@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async function cargarDatos() {
             window.location.href = '/login.html'
             return;
         }
-        console.log(token)
+
         // Obtener número de categorías
         const categoriasResponse = await fetch('/categorias', {
             method: 'GET',

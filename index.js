@@ -1,6 +1,8 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
+import dotenv from 'dotenv'; // Importar dotenv para poder usar variables de entorno desde un archivo .env
+import cors from 'cors'; // Permitir peticiones desde otros orígenes (CORS)
+
+// Importar las rutas del sistema
 import authRoutes from './routes/authRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import productRoutes from './routes/productRoutes.js';
@@ -9,41 +11,80 @@ import errorRoutes from './routes/errorRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import messageRoutes from './routes/messageRoutes.js';
 
-dotenv.config();
+/* Importaciones para usar Socket.IO */
+import { createServer } from "http"; // Para crear el servidor http
+import { Server } from "socket.io"; // Importar la clase de Socket.io
 
-const port = process.env.PORT;
-const app = express();
+dotenv.config(); // Cargar las variables de entorno del archivo .env
+const app = express(); // Inicializar la aplicacion
+
+/* Crea el servidor HTTP para WebSocket */
+const httpServer = createServer(app);
+
+/* Inicializa el servidor de Socket.IO y lo conecta al servidor HTTP */
+const io = new Server(httpServer, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
+
+io.on('add user', (username) => {
+    io.username = username;
+});
+
+// Nuevo mensaje
+// when the client emits 'new message', this listens and executes
+io.on('new message', (data) => {
+    // we tell the client to execute 'new message'
+    io.broadcast.emit('new message', {
+        username: socket.username,
+        message: data
+    });
+});
+
+// Evento para cuando un nuevo cliente se conecta vía WebSocket
+io.on("connection", (socket) => {
+    console.log('Usuario conectado:', socket.id);
+});
+
+// Inicia el servidor HTTP en el puerto 3000
+const port = process.env.PORT || 3000;
+httpServer.listen(port, () => {
+    console.log(`Servidor escuchando en el puerto ${port}`);
+});
 
 
-
-// Configurar middleware
+// Configura middleware para el servidor Express
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json());  // Permite parsear JSON en las peticiones
+app.use(express.urlencoded({ extended: false })); // Permite parsear datos de formularios
 
-// Configuración de vistas
+// Configura el motor de vistas para renderizar HTML con EJS
 app.set('view engine', 'ejs');
-app.use(express.static("public")); // Permite servir archivos estáticos desde /public
 
-// Usar las rutas de autenticacion 
+// Permite archivos estáticos (CSS, JS, imágenes) desde la carpeta "public"
+app.use(express.static("public"));
+
+// Rutas de autenticación de usuarios (login, registro, etc.)
 app.use(authRoutes);
 
-// Usar la rutas de las categorias
+// Rutas relacionadas con las categorías de productos (crear, listar, etc.)
 app.use(categoryRoutes)
 
-// Usar las rutas de los productos
+// Rutas para la gestión de productos
 app.use(productRoutes)
 
-// Usar la ruta de la pantalla de inicio
+// Ruta  pantalla de inicio del sitio
 app.use(homeRoutes)
 
-// Usar las rutas para obtener los usuarios
+// Rutas relacionadas con usuarios
 app.use(userRoutes)
 
-// Usar las rutas de error
+// Rutas para manejar errores 
 app.use(errorRoutes)
 
-
-app.listen(port, () => {
+/*app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });
+*/

@@ -36,15 +36,14 @@
     background: none;
     border: none;
     cursor: pointer;
-    position: fixed;
+    position: relative;
+    color: black;
     top: 15px;
     left: 15px;
     z-index: 1000;
     display: none; /* Ocultar en pantallas grandes */
 }
 
-/* Responsivo: ocultar sidebar en móviles */
-/* Nuevas mejoras para móviles */
 @media (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
