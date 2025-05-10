@@ -3,9 +3,13 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main  # Cambia esto si usas otra rama
+      - main  
 
 jobs:
+- name: Debug SSH Connection
+  run: |
+    ssh -vvv -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} exit
+
   deploy:
     runs-on: ubuntu-latest
 
