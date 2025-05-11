@@ -87,7 +87,7 @@ async function obtenerTodosUsuarios() {
 }
 
 // Funcion para mostrar los mensajes ordenador por fecha
-async function mostrarMensajesOrdenados() {
+export async function mostrarMensajesOrdenados() {
     const contenedorMensajes = document.getElementById("mensajes");
     contenedorMensajes.innerHTML = ""; // Limpia el contenedor
 
