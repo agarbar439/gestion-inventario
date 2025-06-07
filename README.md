@@ -62,7 +62,7 @@ Incluye funcionalidades como filtrado productos, chat grupal, autenticación seg
 ### 1. Clonar el repositorio
 
 ```bash
-git clone [https://github.com/usuario/nombre-del-repo.git](https://github.com/agarbar439/gestion-inventario)
+git clone https://github.com/agarbar439/gestion-inventario
 cd gestion-inventario
 ```
 ### 2. Instalar dependencias del Backend
