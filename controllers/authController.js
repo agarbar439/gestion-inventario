@@ -18,7 +18,6 @@ export const signup = async (req, res) => {
             return res.status(400).json({ error: 'Todos los campos son obligatorios' });
         }
 
-
         // Validar si el usuario ya existe
         const existingUser = await User.findOne({ where: { nombre_usuario } });
         if (existingUser) {
