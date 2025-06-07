@@ -10,7 +10,7 @@
 
 Sistema de Gestión de Inventario: aplicación web que facilita el control y la administración de productos. Permite gestionar productos y categorías, controlar el stock disponible, registrar operaciones de entrada y salida de mercancías, y restringir el acceso a funciones administrativas según el rol del usuario.
 
-Incluye funcionalidades como filtrado y búsqueda de productos, chat grupal, autenticación segura y CRUD completo.
+Incluye funcionalidades como filtrado productos, chat grupal, autenticación segura y CRUD completo.
 
 ---
 
