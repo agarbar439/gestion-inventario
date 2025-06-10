@@ -57,6 +57,10 @@ Incluye funcionalidades como filtrado productos, chat grupal, autenticación seg
 
 ---
 
+### Esquema E/R de la base de datos
+![image](https://github.com/user-attachments/assets/15336e5b-fb15-408e-b20b-fb268fd2930d)
+
+
 ## 🧩 Instalación y Puesta en Marcha
 
 ### 1. Clonar el repositorio
