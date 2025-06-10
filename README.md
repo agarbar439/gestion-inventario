@@ -60,6 +60,12 @@ Incluye funcionalidades como filtrado productos, chat grupal, autenticación seg
 ### 🛢️ Esquema E/R de la base de datos
 ![image](https://github.com/user-attachments/assets/15336e5b-fb15-408e-b20b-fb268fd2930d)
 
+---
+
+### Tutorial de Uso de la Aplicación
+![tutorial](https://github.com/agarbar439/gestion-inventario/blob/main/public/img/categorias/2025-06-10-1719-47.gif)
+
+---
 
 ### 🔗 URL de la aplicación
 La aplicación web del sistema de Inventario se encuentra desplegada en el siguiente enlace: https://inventarioapp.es
@@ -72,6 +78,8 @@ Contraseña: A12345678
 Usuario: user
 Contraseña: A12345678
 (Permisos de empleado)
+
+---
 
 ### 🖌️ URL del Diseño de la Aplicación
 El prototipo de diseño de la aplicación, realizado en Figma, puede consultarse en el siguiente enlace: [Enlace a figma.](https://www.figma.com/design/KpLI0XaBdbyWF80NKSqgpK/Prototipo-Gestion-de-Inventario?node-id=0-1&t=fZ6ypwkgYWts4k8t-1)
