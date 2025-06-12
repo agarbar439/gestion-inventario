@@ -137,6 +137,33 @@ Empleado
 Usuario: user
 Contraseña: A12345678
 
+---
+### 8. Bibliografía 
+ Bibliografía
+Tutoriales / Vídeos
+https://www.youtube.com/watch?v=wX9UB0r3HDk 
+https://www.youtube.com/watch?v=jkQdEvPf-uI&ab_channel=HaryPhamDev 
+https://www.youtube.com/watch?v=V7R0fkCBcq4&ab_channel=midulive 
+https://www.youtube.com/watch?v=DxYAcXiy-ak&ab_channel=Mart%C3%ADnGesualdo 
+https://www.youtube.com/watch?v=LtB4RR9rj-8 
+
+Documentación oficial
+https://sequelize.org/docs/v7/querying/select-methods/ 
+https://expressjs.com/en/guide/database-integration.html 
+https://www.passportjs.org/concepts/authentication/middleware/ 
+https://jwt.io/ 
+
+Blog / Foros
+https://platzi.com/tutoriales/1649-passport-2019/9793-guardando-el-jwt-en-una-cookie/ 
+https://community.listopro.com/como-conectar-node-js-con-mysql/ 
+https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs 
+https://www.digitalocean.com/community/tutorials/how-to-use-sequelize-with-node-js-and-mysql 
+https://ull-esit-dsi-1617.github.io/estudiar-cookies-y-sessions-en-expressjs-alejandro-raul-35l2-p4/sessionsexpress.html 
+https://medium.com/@kimtai.developer/json-web-tokens-jwt-safe-online-and-mobile-authentication-and-authorisation-f3deb7ec2d0e 
+https://stackoverflow.com/questions/68557161/set-cookie-with-jwt-nodejs-and-javascript 
+http://dev.to/jeanvittory/jwt-refresh-tokens-2g3dv
+
+
 ### Créditos
 Proyecto realizado por Antonio García Barrera
 📚 2º DAW – Proyecto Final
