@@ -1,170 +1,138 @@
-# 📦 Gestión de Inventario
+# 📦 Inventory Management
 
 <aside>
-🛠️ Proyecto de Antonio García Barrera
+🛠️ Project by Antonio García Barrera
 </aside>
 
 ---
 
-## 📘 Descripción General
+## 📘 General Description
 
-Sistema de Gestión de Inventario: aplicación web que facilita el control y la administración de productos. Permite gestionar productos y categorías, controlar el stock disponible, registrar operaciones de entrada y salida de mercancías, y restringir el acceso a funciones administrativas según el rol del usuario.
+Inventory Management System: web application that facilitates product control and administration. It allows you to manage products and categories, control available stock, record goods entry and exit operations, and restrict access to administrative functions according to user role.
 
-Incluye funcionalidades como filtrado productos, chat grupal, autenticación segura y CRUD completo.
-
----
-
-## ✨ Características Principales
-
-- 🗂️ Gestión de productos y categorías  
-- 📉 Control de stock  
-- 🔐 Sistema de autenticación con control de roles  
-- 💬 Chat entre usuarios  
-- 📱 Interfaz moderna y responsiva  
+It includes features such as product filtering, group chat, secure authentication, and full CRUD.
 
 ---
 
-## 🎯 Objetivos del Proyecto
+## ✨ Key Features
 
-1. **Gestionar productos:** Agregar, editar y eliminar productos del inventario.  
-2. **Control de stock:** Registrar entradas/salidas actualizando el inventario.  
-3. **Categorías:** Organizar productos por tipo.  
-4. **Interfaz intuitiva:** Navegación sencilla y rápida.  
-5. **Autenticación segura:** Acceso restringido a funciones según el rol del usuario.
+- 🗂️ Product and category management  
+- 📉 Stock control  
+- 🔐 Role-based authentication system  
+- 💬 Chat between users  
+- 📱 Modern and responsive interface  
 
 ---
 
-## ⚙️ Tecnologías Utilizadas
+## 🎯 Project Objectives
+
+1. **Manage products:** Add, edit, and remove products from inventory.  
+2. **Stock control:** Record entries/exits by updating the inventory.  
+3. **Categories:** Organise products by type.  
+4. **Intuitive interface:** Simple and fast navigation.  
+5. **Secure authentication:** Restricted access to functions based on user role.
+
+---
+
+## ⚙️ Technologies Used
 
 ### 🔙 Backend
 
-- **Framework principal:** Express.js  
-- **Base de datos:** MySQL + Sequelize ORM  
-- **Validación:** Zod  
-- **Autenticación:** JWT  
-- **Otras funciones:**  
+- **Main framework:** Express.js  
+- **Databases:** MySQL + Sequelize ORM  
+- **Validation:** Zod  
+- **Authentication:** JWT  
+- **Other functions:**  
   - API REST  
-  - Operaciones CRUD  
-  - Middleware de protección  
-  - Gestión de usuarios  
-  - Chat entre usuarios
+  - CRUD operations  
+  - Protection middleware  
+  - User management  
+  - Chat between users
 
 ### 🎨 Frontend
 
-- **Tecnologías base:** HTML, CSS, JavaScript  
+- **Technologies:** HTML, CSS, JavaScript  
 - **Framework CSS:** Bootstrap  
-- **Conexión con backend:** Fetch API  
+- **Backend connection:** Fetch API  
 
 ---
 
-### 🛢️ Esquema E/R de la base de datos
+### 🛢️ E/R diagram of the database
 ![image](https://github.com/user-attachments/assets/15336e5b-fb15-408e-b20b-fb268fd2930d)
 
 ---
 
-### Tutorial de Uso de la Aplicación
+### Application Tutorial
 ![tutorial](https://github.com/agarbar439/gestion-inventario/blob/main/public/img/categorias/2025-06-10-1719-47.gif)
 
 ---
 
-### 🔗 URL de la aplicación
-La aplicación web del sistema de Inventario se encuentra desplegada en el siguiente enlace: https://inventarioapp.es
-Para iniciar sesión, se pueden utilizar las siguientes credenciales de acceso:
+### 🔗 Application URL
+The Inventory System web application can be accessed via the following link: https://inventarioapp.es
+To log in, please use the following credentials:
 
-Usuario: admin
-Contraseña: A12345678
-(Permisos de administrador)
+User: admin
+Passsword: A12345678
+(Admin role)
 
-Usuario: user
-Contraseña: A12345678
-(Permisos de empleado)
+User: user
+Password: A12345678
+(Employee role)
 
 ---
 
-### 🖌️ URL del Diseño de la Aplicación
-El prototipo de diseño de la aplicación, realizado en Figma, puede consultarse en el siguiente enlace: [Enlace a figma.](https://www.figma.com/design/KpLI0XaBdbyWF80NKSqgpK/Prototipo-Gestion-de-Inventario?node-id=0-1&t=fZ6ypwkgYWts4k8t-1)
+### 🖌️ Application Design URL
+The prototype design of the application, created in Figma, can be viewed at the following link:  [Enlace a figma.](https://www.figma.com/design/KpLI0XaBdbyWF80NKSqgpK/Prototipo-Gestion-de-Inventario?node-id=0-1&t=fZ6ypwkgYWts4k8t-1)
 
 
-## 🧩 Instalación y Puesta en Marcha
+## 🧩 Installation and Start-Up
 
-### 1. Clonar el repositorio
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/agarbar439/gestion-inventario
 cd gestion-inventario
 ```
-### 2. Instalar dependencias del Backend
+### 2. Install Backend dependencies
 ```bash
 npm install
 ```
 
-### 3. Configurar variables de entorno
-Crear archivo .env en la raíz del proyecto:
+### 3. Configure environment variables
+Create .env file at the root of the project:
 ```bash
 DB_HOST=localhost
-DB_USER=tu_usuario_mysql
-DB_PASSWORD=tu_contraseña
+DB_USER=your_mysql_user
+DB_PASSWORD=mysql_password
 DB_NAME=inventario_supermercado
 PORT=3000
-JWT_SECRET=mi_clave_secreta_segura
+JWT_SECRET=secret key
 
 ```
-### 4. Importar la base de datos
-El archivo SQL está en:
+### 4. Import the database
+The SQL file is in:
 ```bash
 /database/inventario_supermercado.sql
 ```
-Importar usando consola o gestor gráfico (MySQL Workbench, phpMyAdmin).
+Import using console or graphical manager (MySQL Workbench, phpMyAdmin).
 ```bash
-mysql -u tu_usuario -p inventario_supermercado < ./database/inventario_supermercado.sql
+mysql -u your_user -p inventario_supermercado < ./database/inventario_supermercado.sql
 ```
 
-### 5. Ejecutar el servidor
+### 5. Run the server
 ```bash
 npm run dev o node index.js
 ```
-La API se levantará en http://localhost:3000.
+The API will be launched in http://localhost:3000.
 
-### 6. Iniciar la aplicación (Frontend)
-Abre frontend/index.html directamente en el navegador
+### 6. Start the application (Frontend)
+Open localhost:3000/index.html directly in the browser
 
-### 7. Acceso con usuarios de prueba
-Administrador
-Usuario: admin
-Contraseña: A12345678
+### 7. Access with test users
+Admin role
+user: admin
+Password: A12345678
 
-Empleado
-Usuario: user
-Contraseña: A12345678
-
----
-### 8. Bibliografía 
- Bibliografía
-Tutoriales / Vídeos
-https://www.youtube.com/watch?v=wX9UB0r3HDk 
-https://www.youtube.com/watch?v=jkQdEvPf-uI&ab_channel=HaryPhamDev 
-https://www.youtube.com/watch?v=V7R0fkCBcq4&ab_channel=midulive 
-https://www.youtube.com/watch?v=DxYAcXiy-ak&ab_channel=Mart%C3%ADnGesualdo 
-https://www.youtube.com/watch?v=LtB4RR9rj-8 
-
-Documentación oficial
-https://sequelize.org/docs/v7/querying/select-methods/ 
-https://expressjs.com/en/guide/database-integration.html 
-https://www.passportjs.org/concepts/authentication/middleware/ 
-https://jwt.io/ 
-
-Blog / Foros
-https://platzi.com/tutoriales/1649-passport-2019/9793-guardando-el-jwt-en-una-cookie/ 
-https://community.listopro.com/como-conectar-node-js-con-mysql/ 
-https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs 
-https://www.digitalocean.com/community/tutorials/how-to-use-sequelize-with-node-js-and-mysql 
-https://ull-esit-dsi-1617.github.io/estudiar-cookies-y-sessions-en-expressjs-alejandro-raul-35l2-p4/sessionsexpress.html 
-https://medium.com/@kimtai.developer/json-web-tokens-jwt-safe-online-and-mobile-authentication-and-authorisation-f3deb7ec2d0e 
-https://stackoverflow.com/questions/68557161/set-cookie-with-jwt-nodejs-and-javascript 
-http://dev.to/jeanvittory/jwt-refresh-tokens-2g3dv
-
-
-### Créditos
-Proyecto realizado por Antonio García Barrera
-📚 2º DAW – Proyecto Final
-🎓 I.E.S. Juan de la Cierva
+Employee role
+User: user
+Password: A12345678
