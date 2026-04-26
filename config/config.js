@@ -3,12 +3,12 @@ dotenv.config();  // Cargar las variables de entorno
 
 // Configuración de la base de datos mediante variables de entorno
 const config = {
-    database: 'inventario_supermercado',
-    username: 'root',
-    password: process.env.PASSWORD,
-    host: process.env.HOST,
+    database: process.env.DB_NAME,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
     dialect: 'mysql',
-    secretKey: process.env.SECRET_KEY,
+    secretKey: process.env.JWT_SECRET,
 };
 
 export default config;
